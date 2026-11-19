@@ -1,0 +1,20 @@
+{
+  "name": "vibecode-interactive",
+  "version": "1.0.0",
+  "description": "Interactive website with SVG emojis, Java & JavaScript playground, smooth transitions, and dynamic widgets",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "svg",
+    "emoji",
+    "java",
+    "javascript",
+    "widgets",
+    "animations"
+  ],
+  "author": "VibeCode",
+  "license": "MIT"
+}

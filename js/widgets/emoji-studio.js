@@ -406,7 +406,7 @@ export class EmojiStudio {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `vibecode-emoji-${Date.now()}.svg`;
+    link.download = `javaverse-emoji-${Date.now()}.svg`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

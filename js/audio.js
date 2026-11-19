@@ -26,7 +26,7 @@ class SoundEngine {
 
     // Load mute preference
     try {
-      this.isMuted = localStorage.getItem('vibecode_muted') === 'true';
+      this.isMuted = localStorage.getItem('javaverse_muted') === 'true';
     } catch (e) {}
   }
 
@@ -57,7 +57,7 @@ class SoundEngine {
   toggleMute() {
     this.isMuted = !this.isMuted;
     try {
-      localStorage.setItem('vibecode_muted', this.isMuted);
+      localStorage.setItem('javaverse_muted', this.isMuted);
     } catch (e) {}
 
     if (this.masterGain && this.ctx) {

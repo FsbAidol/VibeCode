@@ -1,5 +1,5 @@
 /**
- * VibeCode Widgets Dedicated Stylesheet
+ * JavaVerse 3D Widgets Dedicated Stylesheet
  */
 
 /* ================= WIDGET: EMOJI STUDIO ================= */
@@ -927,4 +927,62 @@
   padding: 2.5rem;
   color: var(--text-dim);
   font-size: 0.95rem;
+}
+
+/* ================= WIDGET: 3D GRAPHICS UNIVERSE ================= */
+.scene3d-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.scene3d-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.canvas-3d-wrapper {
+  width: 100%;
+  height: 480px;
+  background: radial-gradient(circle at 50% 40%, rgba(15, 23, 42, 0.7) 0%, rgba(8, 12, 22, 0.98) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+#threeCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+#threeCanvas:active {
+  cursor: grabbing;
+}
+
+.canvas-3d-hint {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  pointer-events: none;
+  animation: floatGentle 4s ease-in-out infinite;
 }

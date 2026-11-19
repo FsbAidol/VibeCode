@@ -1,5 +1,5 @@
 /**
- * VibeCode Main Application Controller
+ * JavaVerse 3D Main Application Controller
  * Handles SPA navigation, theme switching, widgets orchestration, and sound effects
  */
 
@@ -7,6 +7,7 @@ import { sound } from './audio.js';
 import { SVG_EMOJIS } from './emoji-data.js';
 import { EmojiStudio } from './widgets/emoji-studio.js';
 import { EmojiPhysicsSandbox } from './widgets/physics.js';
+import { Scene3D } from './widgets/scene-3d.js';
 import { JavaRunner } from './widgets/java-runner.js';
 import { LoFiPlayer } from './widgets/lofi-player.js';
 import { PomodoroTimer } from './widgets/pomodoro.js';
@@ -16,15 +17,17 @@ import { NotesWidget } from './widgets/notes.js';
 import { triggerCelebration, triggerEmojiConfetti } from './utils/confetti.js';
 import { init3DTilt } from './utils/tilt.js';
 
-// Expose globals for the interactive terminal
-window.vibecodeSound = sound;
+// Expose globals for the interactive terminal & user scripts
+window.soundEngine = sound;
+window.javaverseSound = sound;
 window.triggerCelebration = triggerCelebration;
 window.triggerEmojiConfetti = triggerEmojiConfetti;
 
 class App {
   constructor() {
     this.currentTheme = 'cyber';
-    this.currentTab = 'physics';
+    this.currentTab = 'scene3dTab';
+    this.scene3DInstance = null;
     this.physicsInstance = null;
     this.studioInstance = null;
     this.javaRunnerInstance = null;
@@ -50,7 +53,7 @@ class App {
   /* ================= THEME MANAGEMENT ================= */
 
   initTheme() {
-    const savedTheme = localStorage.getItem('vibecode_theme') || 'cyber';
+    const savedTheme = localStorage.getItem('javaverse_theme') || 'cyber';
     this.setTheme(savedTheme);
 
     const themeSelect = document.getElementById('themeSelector');
@@ -67,7 +70,7 @@ class App {
     document.documentElement.setAttribute('data-theme', themeName);
     this.currentTheme = themeName;
     try {
-      localStorage.setItem('vibecode_theme', themeName);
+      localStorage.setItem('javaverse_theme', themeName);
     } catch (e) {}
   }
 
@@ -166,7 +169,10 @@ class App {
           }
         });
 
-        // Trigger resize on physics canvas when tab becomes active
+        // Trigger resizes on canvas widgets when tabs become visible
+        if (targetId === 'scene3dTab' && this.scene3DInstance) {
+          setTimeout(() => this.scene3DInstance.onWindowResize(), 50);
+        }
         if (targetId === 'physicsTab' && this.physicsInstance) {
           setTimeout(() => this.physicsInstance.resizeCanvas(), 50);
         }
@@ -189,6 +195,12 @@ class App {
   /* ================= WIDGETS INITIALIZATION ================= */
 
   initWidgets() {
+    // 0. 3D WebGL Graphics Universe (Three.js)
+    const scene3dBox = document.getElementById('scene3dWidgetContainer');
+    if (scene3dBox) {
+      this.scene3DInstance = new Scene3D(scene3dBox);
+    }
+
     // 1. Physics Sandbox
     const physicsBox = document.getElementById('physicsWidgetContainer');
     if (physicsBox) {

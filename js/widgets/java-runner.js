@@ -31,7 +31,7 @@ public class CoffeeBrewService {
         
         long heapUsed = Runtime.getRuntime().totalMemory() / (1024 * 1024);
         System.out.println("📊 [Stats] Brew completed in 1.42s | Heap: " + heapUsed + "MB");
-        System.out.println("🎉 [Success] System.out.println(\\"Enjoy your VibeCode!\\");");
+        System.out.println("🎉 [Success] System.out.println(\\"Enjoy JavaVerse 3D!\\");");
     }
 }`
       },
@@ -63,7 +63,7 @@ public class CoffeeBrewService {
         System.out.println("    / (o) \\\\   ");
         System.out.println("   /   __  \\\\  [Steaming Hot]");
         System.out.println("  /___/__\\\\_\\\\ ");
-        System.out.println("    |  ☕  |   Enjoy writing code with VibeCode!");
+        System.out.println("    |  ☕  |   Enjoy writing code with JavaVerse 3D!");
         System.out.println("    |______|   ");
     }
 }`
@@ -89,8 +89,8 @@ const notes = [261.63, 329.63, 392.00, 493.88, 523.25];
 notes.forEach((freq, idx) => {
   setTimeout(() => {
     console.log(\`♪ Note \${idx + 1}: \${freq.toFixed(1)} Hz\`);
-    if (window.vibecodeSound) {
-      window.vibecodeSound.playPop(freq);
+    if (window.soundEngine) {
+      window.soundEngine.playPop(freq);
     }
   }, idx * 120);
 });`

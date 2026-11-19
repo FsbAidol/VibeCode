@@ -1,6 +1,10 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
@@ -98,6 +102,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`🚀 VibeCode Server running at http://${HOST}:${PORT}`);
-  console.log(`🌐 Ready for preview`);
+  console.log(`🌌 JavaVerse 3D Server running at http://${HOST}:${PORT}`);
+  console.log(`✨ Three.js 3D & Vector SVG Engine active`);
 });

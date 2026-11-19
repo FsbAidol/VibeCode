@@ -25,7 +25,7 @@ export class BeanCatcherGame {
     this.keys = {};
 
     try {
-      this.highScore = parseInt(localStorage.getItem('vibecode_game_high') || '0', 10);
+      this.highScore = parseInt(localStorage.getItem('javaverse_game_high') || '0', 10);
     } catch (e) {}
 
     this.init();
@@ -243,7 +243,7 @@ export class BeanCatcherGame {
           if (this.score > this.highScore) {
             this.highScore = this.score;
             try {
-              localStorage.setItem('vibecode_game_high', this.highScore);
+              localStorage.setItem('javaverse_game_high', this.highScore);
             } catch (e) {}
           }
         }

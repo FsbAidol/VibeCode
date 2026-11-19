@@ -22,7 +22,7 @@ export class NotesWidget {
 
   loadNotes() {
     try {
-      const saved = localStorage.getItem('vibecode_notes');
+      const saved = localStorage.getItem('javaverse_notes');
       this.notes = saved ? JSON.parse(saved) : this.defaultNotes;
     } catch (e) {
       this.notes = this.defaultNotes;
@@ -31,7 +31,7 @@ export class NotesWidget {
 
   saveNotes() {
     try {
-      localStorage.setItem('vibecode_notes', JSON.stringify(this.notes));
+      localStorage.setItem('javaverse_notes', JSON.stringify(this.notes));
     } catch (e) {}
   }
 

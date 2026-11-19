@@ -1,0 +1,22 @@
+[Unit]
+Description=JavaVerse 3D Web Application
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/javaverse-3d
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+Environment=PORT=3000
+
+# Security limits
+LimitNOFILE=65535
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=javaverse-3d
+
+[Install]
+WantedBy=multi-user.target

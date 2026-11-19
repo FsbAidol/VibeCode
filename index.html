@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VibeCode · SVG Эмодзи, Java & JS Виджеты</title>
-  <meta name="description" content="Интерактивный веб-хаб с векторными SVG-эмодзи, Java & JavaScript скриптами, плавной физикой и крутыми виджетами." />
+  <title>JavaVerse 3D · Векторные SVG Эмодзи, 3D WebGL и Java Виджеты</title>
+  <meta name="description" content="Интерактивный 3D-мир с трёхмерной графикой Three.js, векторными SVG-эмодзи, Java & JavaScript песочницей, плавной физикой и виджетами." />
   
   <!-- Favicon with inline SVG -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>" />
@@ -34,10 +34,10 @@
         </div>
         <div class="brand-text-col">
           <div class="brand-title-wrap">
-            <h1 class="brand-title">VibeCode Hub</h1>
+            <h1 class="brand-title">JavaVerse 3D</h1>
             <span class="brand-coffee-icon" id="headerCoffeeIcon"></span>
           </div>
-          <span class="brand-subtitle">SVG Эмодзи · Java & JavaScript · Плавные переходы · Виджеты</span>
+          <span class="brand-subtitle">3D WebGL Графика · SVG Эмодзи · Java & JavaScript · Виджеты</span>
         </div>
       </div>
 
@@ -68,7 +68,12 @@
     <nav class="app-nav-bar" aria-label="Разделы сайта">
       <div class="tab-active-pill"></div>
       
-      <button class="nav-tab-item active" data-target="physicsTab">
+      <button class="nav-tab-item active" data-target="scene3dTab">
+        <span class="tab-icon">🌌</span>
+        <span>3D Вселенная</span>
+      </button>
+
+      <button class="nav-tab-item" data-target="physicsTab">
         <span class="tab-icon">🪐</span>
         <span>Песочница & Физика</span>
       </button>
@@ -97,8 +102,25 @@
     <!-- Main Content Tab Views -->
     <main class="tab-views-container">
 
+      <!-- ================= TAB 0: 3D WEBGL UNIVERSE ================= -->
+      <section class="tab-view-pane active" id="scene3dTab">
+        <div class="tilt-card">
+          <div class="card-header-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span class="badge-tag live-badge">● Three.js WebGL 3D Engine</span>
+              <h2 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.25rem;">Интерактивная 3D-Сцена</h2>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Трёхмерная кружка Java с парящими зёрнами, голографический кристалл эмодзи и гипер-варп в космос. Зажмите мышь и вращайте в 360°!
+              </p>
+            </div>
+          </div>
+          <!-- 3D Scene Container -->
+          <div id="scene3dWidgetContainer"></div>
+        </div>
+      </section>
+
       <!-- ================= TAB 1: PHYSICS SANDBOX ================= -->
-      <section class="tab-view-pane active" id="physicsTab">
+      <section class="tab-view-pane" id="physicsTab">
         <div class="tilt-card">
           <div class="card-header-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
             <div>
@@ -228,13 +250,14 @@
     <!-- Footer -->
     <footer class="app-footer">
       <div class="footer-left">
-        <span>© 2026 VibeCode</span>
+        <span>© 2026 JavaVerse 3D</span>
         <span>•</span>
-        <span>Made with SVG, Web Audio & Vanilla JavaScript</span>
+        <span>Three.js 3D WebGL · Vector SVG · Web Audio API · Vanilla JS</span>
       </div>
       <div class="footer-tags">
+        <span class="badge-tag">Three.js 3D</span>
         <span class="badge-tag">100% Vector SVG</span>
-        <span class="badge-tag">No Dependencies</span>
+        <span class="badge-tag">Self-Contained</span>
         <span class="badge-tag">60 FPS Physics</span>
         <span class="badge-tag">Java & JS Ready</span>
       </div>

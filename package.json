@@ -1,13 +1,17 @@
 {
-  "name": "vibecode-interactive",
+  "name": "javaverse-3d",
   "version": "1.0.0",
-  "description": "Interactive website with SVG emojis, Java & JavaScript playground, smooth transitions, and dynamic widgets",
+  "description": "Interactive 3D WebGL universe with vector SVG emojis, Java & JavaScript playground, smooth transitions, and dynamic widgets",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
   },
   "keywords": [
+    "threejs",
+    "webgl",
+    "3d",
     "svg",
     "emoji",
     "java",
@@ -15,6 +19,9 @@
     "widgets",
     "animations"
   ],
-  "author": "VibeCode",
-  "license": "MIT"
+  "author": "JavaVerse Team",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.187.0"
+  }
 }

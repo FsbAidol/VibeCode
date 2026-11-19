@@ -1,0 +1,171 @@
+/**
+ * JavaVerse 3D Smooth Animations & Keyframes
+ */
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes steamRise {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) scaleX(1.15) translateX(3px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-22px) scaleX(1.3) translateX(-3px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  50% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 18px currentColor);
+  }
+}
+
+@keyframes rotateRays {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rainFall {
+  0% {
+    stroke-dashoffset: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    stroke-dashoffset: 24;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes lightningFlash {
+  0%, 90%, 100% {
+    opacity: 0;
+  }
+  92%, 96% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #FDE047);
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes waveHand {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-16deg);
+  }
+  75% {
+    transform: rotate(18deg);
+  }
+}
+
+/* Confetti particles */
+.confetti-emoji-particle {
+  position: fixed;
+  font-size: 24px;
+  pointer-events: none;
+  z-index: 99999;
+  user-select: none;
+  animation: confettiFly 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes confettiFly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(var(--scale, 1)) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--vx), var(--vy)) scale(0.3) rotate(var(--rot, 360deg));
+  }
+}
+
+/* Steam Animation Classes */
+.steam-1 {
+  animation: steamRise 2.4s ease-out infinite;
+  transform-origin: 38px 35px;
+}
+.steam-2 {
+  animation: steamRise 2.8s ease-out infinite 0.5s;
+  transform-origin: 50px 34px;
+}
+.steam-3 {
+  animation: steamRise 2.2s ease-out infinite 0.9s;
+  transform-origin: 62px 35px;
+}
+
+/* Mascot waved hand */
+.waving-hand {
+  transform-origin: 26px 58px;
+  animation: waveHand 2.2s ease-in-out infinite;
+}
+
+/* Weather animated classes */
+.sun-rays-rotating {
+  transform-origin: 60px 60px;
+  animation: rotateRays 18s linear infinite;
+}
+
+.rain-streaks line {
+  stroke-dasharray: 8 6;
+  animation: rainFall 0.7s linear infinite;
+}
+
+.lightning-flash {
+  animation: lightningFlash 3.5s ease-in-out infinite;
+}
+
+.star-twinkle {
+  animation: starTwinkle 2.5s ease-in-out infinite;
+}
+.star-twinkle.delay-1 { animation-delay: 0.6s; }
+.star-twinkle.delay-2 { animation-delay: 1.2s; }
+.star-twinkle.delay-3 { animation-delay: 1.8s; }
+
+/* Subtle card entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

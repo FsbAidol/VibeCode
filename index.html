@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="cyber">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaVerse 3D · Векторные SVG Эмодзи, 3D WebGL и Java Виджеты</title>
+  <meta name="description" content="Интерактивный 3D-мир с трёхмерной графикой Three.js, векторными SVG-эмодзи, Java & JavaScript песочницей, плавной физикой и виджетами." />
+  
+  <!-- Favicon with inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/widgets.css" />
+</head>
+<body>
+
+  <!-- Ambient Light Orbs -->
+  <div class="bg-ambient-lights" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="app-container">
+
+    <!-- Header Section -->
+    <header class="app-header">
+      <div class="header-brand">
+        <!-- Java Duke Mascot Logo with wave animation & click celebration -->
+        <div class="duke-avatar-box" id="headerDukeLogo" title="Кликните на Duke!">
+          <!-- Injected via SVG_EMOJIS['duke'] -->
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-title-wrap">
+            <h1 class="brand-title">JavaVerse 3D</h1>
+            <span class="brand-coffee-icon" id="headerCoffeeIcon"></span>
+          </div>
+          <span class="brand-subtitle">3D WebGL Графика · SVG Эмодзи · Java & JavaScript · Виджеты</span>
+        </div>
+      </div>
+
+      <!-- Header Quick Controls -->
+      <div class="header-actions">
+        <!-- Theme Selector -->
+        <select class="custom-select" id="themeSelector" title="Сменить тему оформления">
+          <option value="cyber">⚡ Cyber Neon</option>
+          <option value="coffee">☕ Java Roast</option>
+          <option value="synthwave">🌆 Synthwave</option>
+          <option value="daylight">☀️ Clean Light</option>
+        </select>
+
+        <!-- Sound Toggle -->
+        <button class="btn btn-secondary btn-sm" id="soundToggleBtn">
+          <span class="icon">🔊</span>
+          <span>Звук: Вкл</span>
+        </button>
+
+        <!-- Emoji Cannon Button -->
+        <button class="btn btn-primary btn-sm" id="emojiCannonBtn">
+          <span>🚀 Залп Эмодзи</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs with animated indicator pill -->
+    <nav class="app-nav-bar" aria-label="Разделы сайта">
+      <div class="tab-active-pill"></div>
+      
+      <button class="nav-tab-item active" data-target="scene3dTab">
+        <span class="tab-icon">🌌</span>
+        <span>3D Вселенная</span>
+      </button>
+
+      <button class="nav-tab-item" data-target="physicsTab">
+        <span class="tab-icon">🪐</span>
+        <span>Песочница & Физика</span>
+      </button>
+
+      <button class="nav-tab-item" data-target="studioTab">
+        <span class="tab-icon">🎨</span>
+        <span>SVG Конструктор</span>
+      </button>
+
+      <button class="nav-tab-item" data-target="runnerTab">
+        <span class="tab-icon">☕</span>
+        <span>Java & JS Терминал</span>
+      </button>
+
+      <button class="nav-tab-item" data-target="gameTab">
+        <span class="tab-icon">🎮</span>
+        <span>Ловец Зёрен Java</span>
+      </button>
+
+      <button class="nav-tab-item" data-target="widgetsTab">
+        <span class="tab-icon">🎛️</span>
+        <span>Виджеты & Lo-Fi</span>
+      </button>
+    </nav>
+
+    <!-- Main Content Tab Views -->
+    <main class="tab-views-container">
+
+      <!-- ================= TAB 0: 3D WEBGL UNIVERSE ================= -->
+      <section class="tab-view-pane active" id="scene3dTab">
+        <div class="tilt-card">
+          <div class="card-header-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span class="badge-tag live-badge">● Three.js WebGL 3D Engine</span>
+              <h2 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.25rem;">Интерактивная 3D-Сцена</h2>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Трёхмерная кружка Java с парящими зёрнами, голографический кристалл эмодзи и гипер-варп в космос. Зажмите мышь и вращайте в 360°!
+              </p>
+            </div>
+          </div>
+          <!-- 3D Scene Container -->
+          <div id="scene3dWidgetContainer"></div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 1: PHYSICS SANDBOX ================= -->
+      <section class="tab-view-pane" id="physicsTab">
+        <div class="tilt-card">
+          <div class="card-header-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span class="badge-tag live-badge">● 2D Canvas & Vector SVG</span>
+              <h2 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.25rem;">Гравитационная Песочница SVG-Эмодзи</h2>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Гравитация, кинематика, упругие столкновения и звуковые эффекты. Кликайте для спавна или бросайте эмодзи!
+              </p>
+            </div>
+          </div>
+          <!-- Physics Sandbox Container -->
+          <div id="physicsWidgetContainer"></div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: SVG EMOJI STUDIO ================= -->
+      <section class="tab-view-pane" id="studioTab">
+        <div class="tilt-card">
+          <div class="card-header-bar" style="margin-bottom: 1.25rem;">
+            <span class="badge-tag">Конструктор Графики</span>
+            <h2 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.25rem;">SVG Emoji Studio & Морфинг</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Создавайте векторные лица, меняйте форму, глаза, эмоции и головные уборы. Глаза следят за курсором в реальном времени!
+            </p>
+          </div>
+          <!-- Studio Container -->
+          <div id="studioWidgetContainer"></div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 3: JAVA & JS RUNNER ================= -->
+      <section class="tab-view-pane" id="runnerTab">
+        <div class="tilt-card">
+          <div class="card-header-bar" style="margin-bottom: 1.25rem;">
+            <span class="badge-tag">Интерактивный Кодинг</span>
+            <h2 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.25rem;">Java Virtual Machine & JavaScript Sandbox</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Пишите и выполняйте реальный JavaScript код или компилируйте симулированный Java (OpenJDK 21) с замером времени и выводом в ретро-терминал.
+            </p>
+          </div>
+          <!-- Java & JS Runner Container -->
+          <div id="runnerWidgetContainer"></div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 4: JAVA MINI-GAME ================= -->
+      <section class="tab-view-pane" id="gameTab">
+        <div class="tilt-card">
+          <div class="card-header-bar" style="margin-bottom: 1rem;">
+            <span class="badge-tag">Аркадная Мини-Игра</span>
+            <h2 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.25rem;">Java Bean Catcher · Ловец Зёрен</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Ловите падающие кофейные зёрна и звёзды кружкой Java, накапливайте шкалу кофеина для супер-ускорения и остерегайтесь багов!
+            </p>
+          </div>
+          <!-- Game Container -->
+          <div id="gameWidgetContainer"></div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 5: WIDGETS & LO-FI ================= -->
+      <section class="tab-view-pane" id="widgetsTab">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem;">
+          
+          <!-- Widget: Lo-Fi Music Station -->
+          <div class="tilt-card">
+            <div id="lofiWidgetContainer"></div>
+          </div>
+
+          <!-- Widget: Pomodoro Focus Timer -->
+          <div class="tilt-card">
+            <div id="pomodoroWidgetContainer"></div>
+          </div>
+
+          <!-- Widget: Animated Weather & World Clock -->
+          <div class="tilt-card">
+            <div id="weatherWidgetContainer"></div>
+          </div>
+
+          <!-- Widget: Notes & Idea Scratchpad -->
+          <div class="tilt-card">
+            <div id="notesWidgetContainer"></div>
+          </div>
+
+          <!-- Widget: Synthesizer Soundboard FX -->
+          <div class="tilt-card" style="grid-column: 1 / -1;">
+            <div class="soundboard-header">
+              <span class="badge-tag">Web Audio API</span>
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-top: 0.35rem;">🎛️ Синтезатор Звуковых Эффектов</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Процедурная генерация звуков без аудиофайлов: кликайте для воспроизведения синтезированных сигналов!
+              </p>
+            </div>
+            <div class="soundboard-grid">
+              <button class="soundboard-btn" data-sound="coin">
+                <span class="sb-icon">🪙</span>
+                <span>Coin Chime</span>
+              </button>
+              <button class="soundboard-btn" data-sound="powerup">
+                <span class="sb-icon">⚡</span>
+                <span>Power Up</span>
+              </button>
+              <button class="soundboard-btn" data-sound="laser">
+                <span class="sb-icon">🔫</span>
+                <span>Laser Pew</span>
+              </button>
+              <button class="soundboard-btn" data-sound="pop">
+                <span class="sb-icon">🫧</span>
+                <span>Bubble Pop</span>
+              </button>
+              <button class="soundboard-btn" data-sound="chime">
+                <span class="sb-icon">🔔</span>
+                <span>Bell Chime</span>
+              </button>
+              <button class="soundboard-btn" data-sound="buzzer">
+                <span class="sb-icon">☕</span>
+                <span>Java Error</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-left">
+        <span>© 2026 JavaVerse 3D</span>
+        <span>•</span>
+        <span>Three.js 3D WebGL · Vector SVG · Web Audio API · Vanilla JS</span>
+      </div>
+      <div class="footer-tags">
+        <span class="badge-tag">Three.js 3D</span>
+        <span class="badge-tag">100% Vector SVG</span>
+        <span class="badge-tag">Self-Contained</span>
+        <span class="badge-tag">60 FPS Physics</span>
+        <span class="badge-tag">Java & JS Ready</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
